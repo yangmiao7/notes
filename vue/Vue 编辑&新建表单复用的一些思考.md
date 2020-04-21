@@ -112,7 +112,7 @@
 
 编辑时可以通过传入名为model的props，表单组件中通过watch的model的变化实现表单的回显。
 
-```
+```vue
 <template>
   <div>
     <EditForm
@@ -164,7 +164,7 @@
 
 ### 更进一步，剥离Dialog和按钮
 > 基于对第二种方式出现问题的思考，我们可以对表单组件与Dialog，操作按钮进行剥离，进一步抽象表单组件。
-```
+```vue
 <template>
   <ElForm ref="EditForm" :model="form" :rules="rules">
     <ElFormItem label="姓名" prop="name">
@@ -230,7 +230,7 @@
 由于保存按钮现在不在表单组件中了，没办法通过emit的方式对父组件暴露表单数据，所以改为在methods中注册了一个getValue方法，方法中进行了表单验证，通过返回一个Promise的方式，返回表单数据或异常。父组件在使用这个新的表单组件时，通过ref注册一个表单组件的引用，调用表单组件中的getValue方法获取组件内部的数据。
 
 具体操作如下：
-```
+```vue
 <template>
   <div>
     <!-- 新建时 -->
@@ -299,7 +299,7 @@
 ![](https://user-gold-cdn.xitu.io/2020/3/25/171125ca71ef967e?w=1095&h=775&f=gif&s=239761)
 
 代码如下：
-```
+```vue
 <template>
   <div>
     <ElDialog title="批量添加员工" :visible="showForm">
